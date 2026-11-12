@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Natureza Jurídica das Empresas | SENAC</title>
+  <style>
+    /* VARIABLES & RESET */
+    :root {
+      --primary: #0f172a;      /* Azul-marinho profundo */
+      --primary-light: #1e293b;
+      --secondary: #2563eb;    /* Azul real */
+      --accent: #f97316;       /* Laranja vibrante */
+      --accent-hover: #ea580c;
+      --bg-light: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --radius: 12px;
+      --transition: all 0.25s ease-in-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* HEADER & NAV */
+    header {
+      background-color: var(--primary);
+      color: #ffffff;
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .badge-senac {
+      background-color: var(--accent);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 1px;
+    }
+
+    .brand h1 {
+      font-size: 1.25rem;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      max-width: 100%;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: #cbd5e1;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 600;
+      white-space: nowrap;
+      transition: var(--transition);
+    }
+
+    .nav-btn:hover {
+      color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .nav-btn.active {
+      background-color: var(--accent);
+      color: #ffffff;
+    }
+
+    /* MAIN CONTAINER */
+    main {
+      flex: 1;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    .section-content {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .section-content.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* TYPOGRAPHY & CARDS */
+    .section-header {
+      margin-bottom: 2rem;
+    }
+
+    .section-header .tag {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-top: 0.25rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      border-color: #cbd5e1;
+    }
+
+    .card-interactive {
+      cursor: pointer;
+    }
+
+    .card-interactive:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      color: var(--primary);
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge-orange { background: #fff7ed; color: var(--accent); border: 1px solid #ffedd5; }
+    .badge-blue { background: #eff6ff; color: var(--secondary); border: 1px solid #dbeafe; }
+    .badge-green { background: #f0fdf4; color: var(--success); border: 1px solid #bbf7d0; }
+    .badge-red { background: #fef2f2; color: var(--danger); border: 1px solid #fecaca; }
+
+    /* CALLOUT BOXES */
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid var(--secondary);
+      padding: 1.25rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 1.5rem 0;
+    }
+
+    .callout-warning {
+      background: #fff7ed;
+      border-left-color: var(--accent);
+    }
+
+    .callout-alert {
+      background: #fef2f2;
+      border-left-color: var(--danger);
+    }
+
+    .callout h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .callout p {
+      font-size: 0.95rem;
+      color: #334155;
+    }
+
+    /* MODAL FOR CARDS */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 1rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius);
+      max-width: 650px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 2rem;
+      position: relative;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.25rem;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    /* COMPARISON TOOL */
+    .comparator-container {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .comparator-selectors {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: #ffffff;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.95rem;
+      outline: none;
+      cursor: pointer;
+    }
+
+    select:focus {
+      border-color: var(--secondary);
+    }
+
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .comparison-col {
+      background: var(--bg-light);
+      padding: 1.25rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .comparison-col h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--accent);
+    }
+
+    .comp-item {
+      margin-bottom: 1rem;
+    }
+
+    .comp-item label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .comp-item span {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    /* TABLE */
+    .table-wrapper {
+      overflow-x: auto;
+      background: #ffffff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: var(--primary);
+      color: #ffffff;
+      padding: 1rem;
+      font-weight: 700;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:nth-child(even) {
+      background: var(--bg-light);
+    }
+
+    /* QUIZ */
+    .quiz-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .quiz-option {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .quiz-option:hover {
+      background: #e2e8f0;
+    }
+
+    .quiz-option.correct {
+      background: #dcfce7 !important;
+      border-color: var(--success) !important;
+      color: #14532d;
+      font-weight: 700;
+    }
+
+    .quiz-option.incorrect {
+      background: #fee2e2 !important;
+      border-color: var(--danger) !important;
+      color: #7f1d1d;
+    }
+
+    .quiz-feedback {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      display: none;
+    }
+
+    .quiz-feedback.show {
+      display: block;
+    }
+
+    .btn {
+      background: var(--accent);
+      color: #ffffff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+    }
+
+    .btn-secondary {
+      background: var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-light);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--primary);
+      color: #94a3b8;
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.85rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .comparison-grid, .comparator-selectors {
+        grid-template-columns: 1fr;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+      }
+
+      main {
+        padding: 1.25rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="brand">
+        <span class="badge-senac">SENAC</span>
+        <h1>Natureza Jurídica das Empresas</h1>
+      </div>
+      <nav id="mainNav">
+        <button class="nav-btn active" onclick="switchTab('intro')">Introdução</button>
+        <button class="nav-btn" onclick="switchTab('modalidades')">Modalidades</button>
+        <button class="nav-btn" onclick="switchTab('comparador')">Comparador</button>
+        <button class="nav-btn" onclick="switchTab('outras')">Outras Formas</button>
+        <button class="nav-btn" onclick="switchTab('quiz')">Quiz Interativo</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main>
+
+    <!-- SEÇÃO 1: INTRODUÇÃO -->
+    <section id="sec-intro" class="section-content active">
+      <div class="section-header">
+        <span class="tag">Conceitos Fundamentais</span>
+        <h2>O que é Natureza Jurídica?</h2>
+      </div>
+
+      <p style="margin-bottom: 1.5rem; color: #334155;">
+        A <b>Natureza Jurídica</b> é a classificação legal que define a estrutura de constituição de uma empresa perante a legislação civil e empresarial do Brasil. Ela determina as regras de gestão, a quantidade de sócios, o órgão de registro e a relação patrimonial entre o dono e a empresa.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <div>
+            <span class="badge badge-orange">Pilar 1</span>
+            <h3 class="card-title" style="margin-top: 0.5rem;">Natureza Jurídica</h3>
+            <p class="card-desc">Define o modelo constitucional do negócio. Ex: SLU, LTDA, S.A.</p>
+          </div>
+          <small style="color: var(--accent); font-weight: 700;">Formato e Regras de Responsabilidade</small>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge badge-blue">Pilar 2</span>
+            <h3 class="card-title" style="margin-top: 0.5rem;">Porte Empresarial</h3>
+            <p class="card-desc">Define o tamanho da empresa por seu faturamento anual bruto. Ex: ME (até R$ 360 mil), EPP (até R$ 4,8 mi).</p>
+          </div>
+          <small style="color: var(--secondary); font-weight: 700;">Tamanho Econômico</small>
+        </div>
+
+        <div class="card">
+          <div>
+            <span class="badge badge-green">Pilar 3</span>
+            <h3 class="card-title" style="margin-top: 0.5rem;">Regime Tributário</h3>
+            <p class="card-desc">Define como os impostos serão apurados e pagos ao Fisco. Ex: Simples Nacional, Lucro Presumido, Lucro Real.</p>
+          </div>
+          <small style="color: var(--success); font-weight: 700;">Forma de Pagamento de Impostos</small>
+        </div>
+      </div>
+
+      <div class="callout callout-warning" style="margin-top: 2rem;">
+        <h4>Exemplo Prático de Enquadramento:</h4>
+        <p>A empresa <i>"Padaria da Esquina LTDA"</i> possui:</p>
+        <ul style="margin-left: 1.25rem; margin-top: 0.5rem; font-size: 0.9rem;">
+          <li><b>Natureza Jurídica:</b> SLU (Sociedade Limitada Unipessoal)</li>
+          <li><b>Porte Empresarial:</b> ME (Microempresa)</li>
+          <li><b>Regime Tributário:</b> Simples Nacional</li>
+        </ul>
+      </div>
+
+      <div class="callout" style="margin-top: 1rem;">
+        <h4>Importante sobre Separação Patrimonial:</h4>
+        <p>A responsabilidade limitada separa os bens da pessoa física dos da pessoa jurídica, <b>porém essa proteção não é absoluta</b>. Em casos de fraude, abuso de direito ou confusão patrimonial, a Justiça pode aplicar a <i>Desconsideração da Personalidade Jurídica</i> (Art. 50 do Código Civil).</p>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: MODALIDADES PRINCIPAIS -->
+    <section id="sec-modalidades" class="section-content">
+      <div class="section-header">
+        <span class="tag">Exploração Interativa</span>
+        <h2>Principais Modalidades no Brasil</h2>
+        <p style="color: var(--text-muted); font-size: 0.95rem;">Clique em qualquer cartão abaixo para abrir o detalhamento completo.</p>
+      </div>
+
+      <div class="grid-2">
+        <!-- MEI -->
+        <div class="card card-interactive" onclick="openModal('mei')">
+          <div>
+            <span class="badge badge-orange">Individual</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">MEI <small style="font-size:0.8rem; font-weight:normal;">Microempreendedor Individual</small></h3>
+            <p class="card-desc">Para pequenos negócios com regras e tributação simplificadas em valor fixo mensal.</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Sócios:</b> 1 pessoa</span>
+              <span style="color:var(--danger); font-weight:700;">Sem proteção de bens</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EI -->
+        <div class="card card-interactive" onclick="openModal('ei')">
+          <div>
+            <span class="badge badge-orange">Individual</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">EI <small style="font-size:0.8rem; font-weight:normal;">Empresário Individual</small></h3>
+            <p class="card-desc">Atuação em nome próprio sem sócios. O limite de faturamento segue o porte escolhido (ME/EPP).</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Sócios:</b> 1 pessoa</span>
+              <span style="color:var(--danger); font-weight:700;">Sem proteção de bens</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- EIRELI -->
+        <div class="card card-interactive" onclick="openModal('eireli')">
+          <div>
+            <span class="badge badge-red">Extinta</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">EIRELI <small style="font-size:0.8rem; font-weight:normal;">Histórico Legal</small></h3>
+            <p class="card-desc">Exigia 100 salários mínimos. Foi oficialmente extinta e convertida em SLU pela Lei 14.195/2021.</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Status:</b> Substituída</span>
+              <span style="color:var(--secondary); font-weight:700;">Saiba mais</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLU -->
+        <div class="card card-interactive" onclick="openModal('slu')">
+          <div>
+            <span class="badge badge-green">Moderna & Unipessoal</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">SLU <small style="font-size:0.8rem; font-weight:normal;">Sociedade Limitada Unipessoal</small></h3>
+            <p class="card-desc">Empresa de um único dono com proteção de patrimônio pessoal e sem exigência de capital mínimo.</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Sócios:</b> 1 pessoa</span>
+              <span style="color:var(--success); font-weight:700;">Patrimônio Separado*</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- LTDA -->
+        <div class="card card-interactive" onclick="openModal('ltda')">
+          <div>
+            <span class="badge badge-blue">Sociedade Empresária</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">LTDA <small style="font-size:0.8rem; font-weight:normal;">Sociedade Limitada</small></h3>
+            <p class="card-desc">Formato mais popular para empresas com 1 ou mais sócios, com capital dividido em quotas.</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Sócios:</b> 1 ou mais</span>
+              <span style="color:var(--success); font-weight:700;">Patrimônio Separado*</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOCIEDADE SIMPLES -->
+        <div class="card card-interactive" onclick="openModal('simples')">
+          <div>
+            <span class="badge badge-blue">Profissão Intelectual</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">Sociedade Simples Ltda.</h3>
+            <p class="card-desc">Para profissionais liberais (médicos, advogados) registrados em Cartório (RCPJ).</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Sócios:</b> 2 ou mais</span>
+              <span style="color:var(--success); font-weight:700;">Patrimônio Separado*</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- S.A. -->
+        <div class="card card-interactive" onclick="openModal('sa')">
+          <div>
+            <span class="badge badge-blue">Grandes Empresas</span>
+            <h3 class="card-title" style="margin-top:0.5rem;">S.A. <small style="font-size:0.8rem; font-weight:normal;">Sociedade Anônima</small></h3>
+            <p class="card-desc">Capital dividido em ações. Pode ser de Capital Aberto (Bolsa de Valores) ou Fechado.</p>
+          </div>
+          <div>
+            <hr style="border:none; border-top:1px solid var(--border); margin:0.75rem 0;">
+            <div style="display:flex; justify-content:space-between; font-size:0.85rem;">
+              <span><b>Sócios:</b> Acionistas</span>
+              <span style="color:var(--success); font-weight:700;">Limitada às Ações</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: COMPARADOR INTERATIVO -->
+    <section id="sec-comparador" class="section-content">
+      <div class="section-header">
+        <span class="tag">Ferramenta de Análise</span>
+        <h2>Comparador Lado a Lado</h2>
+        <p style="color: var(--text-muted);">Selecione duas naturezas jurídicas para comparar suas características principais.</p>
+      </div>
+
+      <div class="comparator-container">
+        <div class="comparator-selectors">
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:0.25rem;">Opção A:</label>
+            <select id="selectA" onchange="updateComparison()">
+              <option value="mei">MEI - Microempreendedor Individual</option>
+              <option value="ei">EI - Empresário Individual</option>
+              <option value="slu" selected>SLU - Sociedade Limitada Unipessoal</option>
+              <option value="ltda">LTDA - Sociedade Limitada</option>
+              <option value="simples">Sociedade Simples Limitada</option>
+              <option value="sa">S.A. - Sociedade Anônima</option>
+            </select>
+          </div>
+          <div>
+            <label style="font-size:0.85rem; font-weight:700; color:var(--text-muted); display:block; margin-bottom:0.25rem;">Opção B:</label>
+            <select id="selectB" onchange="updateComparison()">
+              <option value="mei">MEI - Microempreendedor Individual</option>
+              <option value="ei" selected>EI - Empresário Individual</option>
+              <option value="slu">SLU - Sociedade Limitada Unipessoal</option>
+              <option value="ltda">LTDA - Sociedade Limitada</option>
+              <option value="simples">Sociedade Simples Limitada</option>
+              <option value="sa">S.A. - Sociedade Anônima</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="comparison-grid">
+          <div class="comparison-col" id="colA">
+            <!-- JS preenche aqui -->
+          </div>
+          <div class="comparison-col" id="colB">
+            <!-- JS preenche aqui -->
+          </div>
+        </div>
+      </div>
+
+      <!-- TABELA GERAL -->
+      <h3 style="margin-top: 2.5rem; color: var(--primary);">Tabela Geral Resumida</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Modalidade</th>
+              <th>Sócios</th>
+              <th>Proteção Patrimonial</th>
+              <th>Capital Mínimo</th>
+              <th>Registro Principal</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>MEI</b></td>
+              <td>1 titular</td>
+              <td><span style="color:var(--danger); font-weight:700;">Não (Ilimitada)</span></td>
+              <td>Não exige</td>
+              <td>Portal do Empreendedor</td>
+            </tr>
+            <tr>
+              <td><b>EI</b></td>
+              <td>1 titular</td>
+              <td><span style="color:var(--danger); font-weight:700;">Não (Ilimitada)</span></td>
+              <td>Não exige</td>
+              <td>Junta Comercial</td>
+            </tr>
+            <tr>
+              <td><b>SLU</b></td>
+              <td>1 sócio</td>
+              <td><span style="color:var(--success); font-weight:700;">Sim (Limitada*)</span></td>
+              <td>Não exige</td>
+              <td>Junta Comercial</td>
+            </tr>
+            <tr>
+              <td><b>LTDA</b></td>
+              <td>1 ou mais</td>
+              <td><span style="color:var(--success); font-weight:700;">Sim (Limitada*)</span></td>
+              <td>Não exige</td>
+              <td>Junta Comercial</td>
+            </tr>
+            <tr>
+              <td><b>Sociedade Simples</b></td>
+              <td>2 ou mais</td>
+              <td><span style="color:var(--success); font-weight:700;">Sim (Se Ltda.*)</span></td>
+              <td>Não exige</td>
+              <td>Cartório (RCPJ)</td>
+            </tr>
+            <tr>
+              <td><b>S.A.</b></td>
+              <td>2 ou mais (Acionistas)</td>
+              <td><span style="color:var(--success); font-weight:700;">Sim (Por Ações)</span></td>
+              <td>Conforme Lei 6.404</td>
+              <td>Junta Comercial (+ CVM)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: OUTRAS MODALIDADES -->
+    <section id="sec-outras" class="section-content">
+      <div class="section-header">
+        <span class="tag">Estruturas Especiais</span>
+        <h2>Outras Modalidades Jurídicas</h2>
+      </div>
+
+      <div class="grid-2">
+        <div class="card">
+          <h3 class="card-title">Cooperativa</h3>
+          <p class="card-desc">Sociedade de pessoas com finalidade econômica, sem visar ao lucro empresarial próprio. As sobras líquidas do exercício são distribuídas entre os cooperados proporcionalmente às suas operações.</p>
+          <small><b>Legislação:</b> Lei nº 5.764/1971</small>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">SCP — Sociedade em Conta de Participação</h3>
+          <p class="card-desc">Não possui personalidade jurídica própria. O sócio <i>ostensivo</i> opera o negócio em seu nome e responde legalmente; o sócio <i>participante</i> entra apenas com aporte de recursos (investidor).</p>
+          <small><b>Aplicação:</b> Empreendimentos imobiliários e investimentos.</small>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Sociedade em Nome Coletivo</h3>
+          <p class="card-desc">Composta exclusivamente por pessoas físicas. Todos os sócios respondem solidária e ilimitadamente pelas obrigações sociais da empresa.</p>
+          <small><b>Uso:</b> Raro atualmente devido ao alto risco aos bens pessoais.</small>
+        </div>
+
+        <div class="card">
+          <h3 class="card-title">Sociedade em Comandita Simples / por Ações</h3>
+          <p class="card-desc">Divide os sócios em <i>comanditados</i> (pessoas físicas com responsabilidade ilimitada pela gestão) e <i>comanditários</i> (investidores com responsabilidade limitada ao aporte).</p>
+          <small><b>Código Civil:</b> Arts. 1.045 a 1.051 e 1.090 a 1.092</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: QUIZ INTERATIVO -->
+    <section id="sec-quiz" class="section-content">
+      <div class="section-header">
+        <span class="tag">Teste seus Conhecimentos</span>
+        <h2>Quiz Prático de Casos</h2>
+        <p style="color: var(--text-muted);">Responda às questões hipotéticas e receba correção e explicação automática na hora.</p>
+      </div>
+
+      <!-- Q1 -->
+      <div class="quiz-card" id="q1">
+        <h4>1. Mariana quer abrir uma loja online de artesanato totalmente sozinha. Ela não tem sócios, vai começar faturando R$ 30.000 ao ano e quer a forma mais simples e barata de ter um CNPJ. Qual é a melhor opção?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="checkAnswer(1, 0, this)">A) Sociedade Anônima (S.A.)</div>
+          <div class="quiz-option" onclick="checkAnswer(1, 1, this)">B) MEI (Microempreendedor Individual)</div>
+          <div class="quiz-option" onclick="checkAnswer(1, 2, this)">C) Sociedade Simples Limitada</div>
+        </div>
+        <div class="quiz-feedback" id="fb1"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div class="quiz-card" id="q2">
+        <h4>2. Dois médicos decidiram abrir uma clínica juntos para prestar serviços de cardiologia. Eles preferem registrar a empresa em cartório e querem que seus patrimónios pessoais fiquem protegidos contra dívidas da clínica. Qual é o formato ideal?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="checkAnswer(2, 0, this)">A) Empresário Individual (EI)</div>
+          <div class="quiz-option" onclick="checkAnswer(2, 1, this)">B) Sociedade Simples Limitada</div>
+          <div class="quiz-option" onclick="checkAnswer(2, 2, this)">C) MEI</div>
+        </div>
+        <div class="quiz-feedback" id="fb2"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div class="quiz-card" id="q3">
+        <h4>3. Roberto é o único proprietário de uma empresa de tecnologia que fatura R$ 800.000 por ano. Ele deseja que seu patrimônio pessoal não responda pelas dívidas do negócio e não quer colocar um "sócio laranja". O que ele deve abrir?</h4>
+        <div class="quiz-options">
+          <div class="quiz-option" onclick="checkAnswer(3, 0, this)">A) SLU (Sociedade Limitada Unipessoal)</div>
+          <div class="quiz-option" onclick="checkAnswer(3, 1, this)">B) EIRELI</div>
+          <div class="quiz-option" onclick="checkAnswer(3, 2, this)">C) Sociedade em Nome Coletivo</div>
+        </div>
+        <div class="quiz-feedback" id="fb3"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE DETALHAMENTO DAS MODALIDADES -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal-box" onclick="event.stopPropagation()">
+      <button class="modal-close" onclick="forceCloseModal()">&times;</button>
+      <div id="modalBody">
+        <!-- Preenchido via Javascript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Trabalho Acadêmico — SENAC | Apresentação por <b>Pietro & Ana</b></p>
+    <p style="margin-top: 4px; font-size: 0.75rem; color: #64748b;">Legislação Atualizada (Código Civil, Lei 14.195/2021 e LC 123/2006)</p>
+  </footer>
+
+  <!-- JAVASCRIPT -->
+  <script>
+    // DADOS DAS NATUREZAS JURÍDICAS
+    const dataNaturezas = {
+      mei: {
+        title: "MEI — Microempreendedor Individual",
+        badge: "Individual / Simplificado",
+        socios: "1 Titular (Pessoa Física)",
+        responsabilidade: "Ilimitada (patrimônio pessoal do titular responde pelas dívidas)",
+        capital: "Não exige capital mínimo",
+        registro: "Portal do Empreendedor (CCMEI)",
+        limite: "Até R$ 81.000,00 por ano (ou limite proporcional)",
+        vantagens: "Imposto fixo mensal unificado (DAS), emissão de nota fiscal fácil, sem custos burocráticos de abertura.",
+        desvantagens: "Sem proteção de bens pessoais, contratação de no máximo 1 funcionário, restrição a diversas atividades regulamentadas.",
+        exemplo: "Um barbeiro autônomo, uma doceira caseira ou um eletricista residencial."
+      },
+      ei: {
+        title: "EI — Empresário Individual",
+        badge: "Individual / Sem Proteção",
+        socios: "1 Titular (Pessoa Física)",
+        responsabilidade: "Ilimitada (bens da pessoa física se misturam com os da empresa)",
+        capital: "Não exige capital mínimo",
+        registro: "Junta Comercial do Estado",
+        limite: "Não possui limite próprio da natureza jurídica (segue o enquadramento de Porte: ME ou EPP)",
+        vantagens: "Permite faturar acima do MEI e contratar mais funcionários sem precisar de sócio.",
+        desvantagens: "Alto risco patrimonial: se a empresa acumular dívidas, carros e imóveis pessoais podem ser penhorados.",
+        exemplo: "Um mercadinho de bairro em nome individual."
+      },
+      eireli: {
+        title: "EIRELI — Empresa Individual de Responsabilidade Limitada",
+        badge: "EXTINTA (Lei 14.195/2021)",
+        socios: "Formato descontinuado",
+        responsabilidade: "Limitada ao capital social",
+        capital: "Exigia no mínimo 100 salários mínimos inteiramente integralizados",
+        registro: "Junta Comercial",
+        limite: "Substituída integralmente pela SLU",
+        vantagens: "Histórico: Foi a primeira modalidade a permitir proteção patrimonial sem exigir sócio.",
+        desvantagens: "Exigia um capital social inicial altíssimo, inviabilizando pequenos negócios.",
+        exemplo: "Todas as EIRELIs foram convertidas automaticamente em SLU por lei em 2021."
+      },
+      slu: {
+        title: "SLU — Sociedade Limitada Unipessoal",
+        badge: "Moderna / Recomendada",
+        socios: "1 Sócio (Pessoa Física ou Jurídica)",
+        responsabilidade: "Limitada ao capital social (bens pessoais separados*",
+        capital: "Não exige valor mínimo de capital inicial",
+        registro: "Junta Comercial",
+        limite: "Sem restrição de faturamento por ser SLU",
+        vantagens: "Proteção patrimonial do dono sem precisar de sócio 'fantasma/laranja' e sem capital mínimo de abertura.",
+        desvantagens: "Exige acompanhamento contábil completo e regular.",
+        exemplo: "Um consultor de TI ou arquiteto atuando sozinho em sua própria empresa."
+      },
+      ltda: {
+        title: "LTDA — Sociedade Limitada (Empresária)",
+        badge: "Pluripessoal / Capital em Quotas",
+        socios: "1 ou mais sócios",
+        responsabilidade: "Limitada ao total do capital social integralizado",
+        capital: "Não exige valor mínimo estabelecido em lei",
+        registro: "Junta Comercial",
+        limite: "Sem restrição própria",
+        vantagens: "Regras consolidadas, flexibilidade contratual entre os sócios, proteção ao patrimônio particular dos sócios.",
+        desvantagens: "Exige alinhamento constante em Contrato Social para evitar conflitos de gestão.",
+        exemplo: "Uma fábrica de móveis de dois irmãos ou uma loja de roupas com três sócios."
+      },
+      simples: {
+        title: "Sociedade Simples Limitada",
+        badge: "Profissão Intelectual / Cartório",
+        socios: "2 ou mais sócios",
+        responsabilidade: "Limitada às quotas sociais",
+        capital: "Livre fixação no contrato",
+        registro: "Cartório de Registro Civil das Pessoas Jurídicas (RCPJ)",
+        limite: "Sem restrição própria",
+        vantagens: "Ideal para prestação de serviços intelectuais (médicos, advogados, engenheiros) mantendo a proteção patrimonial.",
+        desvantagens: "Não pode exercer atividade empresarial puramente mercantil/comercial.",
+        exemplo: "Um escritório de advocacia ou um consultório médico em parceria."
+      },
+      sa: {
+        title: "S.A. — Sociedade Anônima",
+        badge: "Grandes Empreendimentos",
+        socios: "2 ou mais acionistas (Capital Aberto ou Fechado)",
+        responsabilidade: "Limitada ao preço de emissão das ações subscritas",
+        capital: "Dividido em ações (sem cotas)",
+        registro: "Junta Comercial (e CVM se for de Capital Aberto)",
+        limite: "Sem limites",
+        vantagens: "Fácil captação de recursos no mercado financeiro e transferência simples de ações.",
+        desvantagens: "Alta complexidade regulatória, altos custos de auditoria e publicação de balanços.",
+        exemplo: "Ambev, Petrobras, Vale (Capital Aberto) ou grandes startups consolidadas (Capital Fechado)."
+      }
+    };
+
+    // NAVEGAÇÃO DE TABS
+    function switchTab(tabId) {
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.section-content').forEach(sec => sec.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById(`sec-${tabId}`).classList.add('active');
+    }
+
+    // MODAL
+    function openModal(key) {
+      const item = dataNaturezas[key];
+      if (!item) return;
+
+      const modalBody = document.getElementById('modalBody');
+      modalBody.innerHTML = `
+        <span class="badge badge-orange" style="margin-bottom:0.5rem;">${item.badge}</span>
+        <h2 style="color:var(--primary); margin-bottom:1rem;">${item.title}</h2>
+        <p style="font-size:0.9rem; margin-bottom:1.25rem; color:#475569;"><b>Exemplo:</b> ${item.exemplo}</p>
+
+        <div style="background:var(--bg-light); padding:1rem; border-radius:8px; border:1px solid var(--border); margin-bottom:1rem; font-size:0.9rem;">
+          <p style="margin-bottom:6px;"><b>Sócios:</b> ${item.socios}</p>
+          <p style="margin-bottom:6px;"><b>Responsabilidade:</b> ${item.responsabilidade}</p>
+          <p style="margin-bottom:6px;"><b>Capital Mínimo:</b> ${item.capital}</p>
+          <p style="margin-bottom:6px;"><b>Órgão de Registro:</b> ${item.registro}</p>
+          <p><b>Limite/Regra:</b> ${item.limite}</p>
+        </div>
+
+        <div style="margin-bottom:0.75rem;">
+          <h4 style="color:var(--success); font-size:0.95rem;">Principais Vantagens:</h4>
+          <p style="font-size:0.9rem; color:#334155;">${item.vantagens}</p>
+        </div>
+
+        <div>
+          <h4 style="color:var(--danger); font-size:0.95rem;">Limitações & Atenções:</h4>
+          <p style="font-size:0.9rem; color:#334155;">${item.desvantagens}</p>
+        </div>
+      `;
+
+      document.getElementById('modalOverlay').classList.add('active');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'modalOverlay') {
+        document.getElementById('modalOverlay').classList.remove('active');
+      }
+    }
+
+    function forceCloseModal() {
+      document.getElementById('modalOverlay').classList.remove('active');
+    }
+
+    // COMPARADOR
+    function updateComparison() {
+      const keyA = document.getElementById('selectA').value;
+      const keyB = document.getElementById('selectB').value;
+
+      renderCol('colA', dataNaturezas[keyA]);
+      renderCol('colB', dataNaturezas[keyB]);
+    }
+
+    function renderCol(elementId, item) {
+      document.getElementById(elementId).innerHTML = `
+        <h3>${item.title}</h3>
+        <div class="comp-item">
+          <label>Quantidade de Sócios</label>
+          <span>${item.socios}</span>
+        </div>
+        <div class="comp-item">
+          <label>Responsabilidade Patrimonial</label>
+          <span>${item.responsabilidade}</span>
+        </div>
+        <div class="comp-item">
+          <label>Exigência de Capital Mínimo</label>
+          <span>${item.capital}</span>
+        </div>
+        <div class="comp-item">
+          <label>Órgão de Registro</label>
+          <span>${item.registro}</span>
+        </div>
+      `;
+    }
+
+    // QUIZ LOGIC
+    const answers = {
+      1: {
+        correct: 1, // MEI
+        explain: "<b>Correto!</b> O MEI é perfeito para empreendedores individuais que faturam até R$ 81 mil/ano e buscam o menor custo burocrático inicial."
+      },
+      2: {
+        correct: 1, // Sociedade Simples Ltda
+        explain: "<b>Exato!</b> Por ser uma atividade intelectual (médica) com dois sócios, o formato adequado para registro em cartório com proteção aos bens é a Sociedade Simples Limitada."
+      },
+      3: {
+        correct: 0, // SLU
+        explain: "<b>Perfeito!</b> A SLU (Sociedade Limitada Unipessoal) permite 1 único dono, protege os bens particulares e não exige capital mínimo (a EIRELI foi extinta em 2021)."
+      }
+    };
+
+    function checkAnswer(qNum, optIdx, element) {
+      const quizCard = document.getElementById(`q${qNum}`);
+      const options = quizCard.querySelectorAll('.quiz-option');
+      const feedback = document.getElementById(`fb${qNum}`);
+      const qData = answers[qNum];
+
+      options.forEach(opt => opt.classList.remove('correct', 'incorrect'));
+
+      if (optIdx === qData.correct) {
+        element.classList.add('correct');
+        feedback.className = "quiz-feedback show callout";
+        feedback.innerHTML = qData.explain;
+      } else {
+        element.classList.add('incorrect');
+        options[qData.correct].classList.add('correct');
+        feedback.className = "quiz-feedback show callout-alert";
+        feedback.innerHTML = "<b>Incorreto.</b> Observe as regras de número de sócios, proteção aos bens pessoais e a extinção da EIRELI em 2021.";
+      }
+    }
+
+    // INICIALIZAÇÃO
+    window.onload = function() {
+      updateComparison();
+    };
+  </script>
+</body>
+</html>
